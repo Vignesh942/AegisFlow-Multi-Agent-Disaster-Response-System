@@ -147,7 +147,7 @@ Open `http://localhost:5173`.
 
 Add screenshots here after running the app:
 
-- Dashboard overview
+- Dashboard overview 
 - Bangalore incident map
 - AI command chain reasoning
 - Final dispatch decision
