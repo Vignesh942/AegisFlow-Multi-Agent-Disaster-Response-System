@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: aegisflow-frontend
+    env: static
+    buildCommand: npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_BASE
+        value: https://your-backend-name.onrender.com

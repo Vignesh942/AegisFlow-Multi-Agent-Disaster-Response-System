@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  min-height: 100%;
+  margin: 0;
+  background: #071013;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+body { overflow: hidden; }
+button { border-radius: 0; }
+
+/* ─── Leaflet ─── */
+.leaflet-container {
+  background: #071013;
+  filter: saturate(0.72) contrast(1.05) brightness(0.7);
+}
+.leaflet-control-attribution {
+  background: rgba(7, 16, 19, 0.76) !important;
+  color: #94a3b8 !important;
+}
+.leaflet-control-attribution a { color: #29d3c2 !important; }
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  border-radius: 4px;
+  background: #0b171a;
+  color: #e2e8f0;
+  border: 1px solid #263a40;
+}
+
+/* ─── Map markers ─── */
+.incident-ring {
+  display: grid;
+  place-items: center;
+  position: relative;
+  border: 2px solid var(--marker-color);
+  background: color-mix(in srgb, var(--marker-color) 24%, transparent);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--marker-color) 36%, transparent);
+  color: #ffffff;
+}
+.incident-ring::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border: 1px solid var(--marker-color);
+  opacity: 0.35;
+  animation: pulse-ring 1.8s ease-out infinite;
+}
+.incident-ring span { position: relative; z-index: 1; display: grid; place-items: center; }
+.incident-resolved { box-shadow: 0 0 22px rgba(62, 228, 123, 0.3); }
+
+.resource-vehicle-marker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 76px;
+  height: 36px;
+  padding: 5px 8px;
+  border: 1px solid var(--status-color);
+  background: rgba(7, 16, 19, 0.92);
+  color: #ffffff;
+  box-shadow: 0 0 24px color-mix(in srgb, var(--status-color) 40%, transparent);
+}
+.resource-vehicle-marker::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border: 1px solid color-mix(in srgb, var(--status-color) 42%, transparent);
+}
+.vehicle-icon { display: grid; place-items: center; width: 24px; height: 24px; color: var(--marker-color); }
+.vehicle-label { font-size: 10px; font-weight: 800; line-height: 1; color: #ffffff; }
+.vehicle-status-dot { width: 7px; height: 7px; margin-left: auto; background: var(--status-color); box-shadow: 0 0 12px var(--status-color); }
+
+.dispatch-line { animation: route-flow 0.9s linear infinite; }
+
+/* ─── Animations ─── */
+@keyframes pulse-ring {
+  0% { transform: scale(0.75); opacity: 0.55; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+@keyframes route-flow {
+  from { stroke-dashoffset: 18; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes badge-pop {
+  0% { transform: scale(0.8); opacity: 0; }
+  60% { transform: scale(1.08); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-fade-in-up { animation: fadeInUp 0.4s ease both; }
+.animate-shimmer { animation: shimmer 1.4s ease infinite; }
+.animate-spin-slow { animation: spin-slow 2s linear infinite; }
+.animate-badge-pop { animation: badge-pop 0.35s ease both; }
+
+/* ─── Welcome Modal ─── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 16, 19, 0.88);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.modal-box {
+  background: #0b171a;
+  border: 1px solid #263a40;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 560px;
+  padding: 36px;
+  box-shadow: 0 0 80px rgba(41, 211, 194, 0.12);
+  animation: fadeInUp 0.4s ease both;
+}
+.modal-step {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 12px;
+  border: 1px solid #263a40;
+  border-radius: 6px;
+  background: #071013;
+}
+.modal-step-num {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  background: rgba(41, 211, 194, 0.15);
+  border: 1px solid rgba(41, 211, 194, 0.4);
+  color: #29d3c2;
+  font-size: 12px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+
+/* ─── Tooltip ─── */
+.tooltip-wrap { position: relative; display: inline-flex; }
+.tooltip-wrap .tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #102025;
+  border: 1px solid #263a40;
+  color: #e2e8f0;
+  font-size: 11px;
+  line-height: 1.4;
+  white-space: nowrap;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: opacity 0.15s ease;
+  z-index: 100;
+}
+.tooltip-wrap:hover .tooltip-text { visibility: visible; opacity: 1; }
+
+/* ─── AI thinking indicator ─── */
+.thinking-dots span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #29d3c2;
+  margin: 0 2px;
+  animation: shimmer 1.2s ease infinite;
+}
+.thinking-dots span:nth-child(2) { animation-delay: 0.2s; }
+.thinking-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+/* ─── Activity feed entry ─── */
+.feed-entry {
+  display: flex;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  transition: background 0.2s;
+  animation: fadeInUp 0.3s ease both;
+}
+.feed-entry:hover { background: rgba(38, 58, 64, 0.3); }
+.feed-entry.feed-critical { border-color: rgba(255, 77, 94, 0.2); background: rgba(255, 77, 94, 0.05); }
+.feed-entry.feed-success { border-color: rgba(62, 228, 123, 0.2); background: rgba(62, 228, 123, 0.05); }
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #071013; }
+::-webkit-scrollbar-thumb { background: #263a40; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #374f55; }
