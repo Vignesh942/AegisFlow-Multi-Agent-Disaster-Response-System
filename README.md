@@ -1,6 +1,6 @@
 # AegisFlow
  
-AegisFlow is a 24-hour hackathon MVP for a multi-agent AI disaster response and resource coordination system focused on Bangalore city. It presents a dark emergency command center dashboard where concurrent fire, flood, medical, and collapse incidents are analyzed by collaborating AI agents before a final dispatch decision is visualized on a live map.
+AegisFlow is a multi-agent AI disaster response and resource coordination system focused on Bangalore city. It presents a dark emergency command center dashboard where concurrent fire, flood, medical, and collapse incidents are analyzed by collaborating AI agents before a final dispatch decision is visualized on a live map.
  
 ## Architecture
  
