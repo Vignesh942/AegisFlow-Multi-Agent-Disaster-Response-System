@@ -7,7 +7,7 @@ AegisFlow is a multi-agent AI disaster response and resource coordination system
 - **Frontend:** React + Vite + Tailwind CSS + Leaflet/OpenStreetMap
 - **Backend:** Python FastAPI
 - **AI:** Groq OpenAI-compatible API using `llama-3.3-70b-versatile`
-- **Database:** SQLite seeded with realistic Bangalore incidents and resources
+- **Database:** Json for storing incidents reports
  
 Agent flow:
  
