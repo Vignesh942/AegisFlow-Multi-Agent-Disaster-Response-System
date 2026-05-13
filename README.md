@@ -59,7 +59,7 @@ copy backend\.env.example backend\.env
 [![React](https://img.shields.io/badge/React-18+-61DAFB.svg)](https://reactjs.org/)
 [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen.svg)](https://aegisflow-frontend.onrender.com)
  
-> **🏆 Hackathon Project** | Real-time AI-powered emergency coordination for Bangalore city
+> | Real-time AI-powered emergency coordination for Bangalore city
  
 AegisFlow is a sophisticated multi-agent AI system that coordinates disaster response across Bangalore. Watch three specialized AI agents collaborate in real-time to analyze incidents, allocate resources, and make life-saving dispatch decisions on an interactive command center dashboard.
  
