@@ -379,10 +379,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
  
 ---
  
-## 📞 Contact
- 
-**Created by**: [Vignesh942](https://github.com/Vignesh942)
- 
 **Project Link**: [https://github.com/Vignesh942/AegisFlow-Multi-Agent-Disaster-Response-System](https://github.com/Vignesh942/AegisFlow-Multi-Agent-Disaster-Response-System)
  
 ---
