@@ -287,12 +287,12 @@ graph TB
 - **Security**: Environment-based configuration, no hardcoded secrets
  
 ---
- 
-## 🎮 Live Demo
- 
-**🌐 [Try the Live Demo](https://aegisflow-frontend.onrender.com)**
- 
-*Experience the full multi-agent coordination system in action*
+
+ ### Demo
+
+
+https://github.com/user-attachments/assets/8154e0b1-d370-4fb1-a8bd-80208b369b4b
+
  
 ---
  
@@ -336,7 +336,6 @@ AegisFlow/
 **📖 [Complete Deployment Guide](./DEPLOYMENT.md)**
  
 ---
- 
 
  
 ### Problem Solved
